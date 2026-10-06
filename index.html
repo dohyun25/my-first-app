@@ -2,7 +2,10 @@
 <html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="PGN을 브라우저 안에서 분석하는 무료 체스 복기. 계정, 광고, 업로드 없이."><meta name="theme-color" content="#154d43"><title>한 수 복기 · 무료 로컬 체스 리뷰</title><style>
 :root{--ink:#183d34;--muted:#697a72;--teal:#176451;--dark:#123f35;--paper:#f7f6ef;--line:#dde3d9;--card:#fffef9;--light:#ecebd9;--square:#719b86;--best:#087d69;--good:#648454;--inaccuracy:#c39122;--mistake:#df853c;--blunder:#c55e5b}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:15px/1.6 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button,a,label,input,select,textarea{touch-action:manipulation}button{cursor:pointer;border:1px solid var(--line);border-radius:10px;background:var(--card);color:var(--ink);padding:9px 14px;font-weight:650}button:hover:not(:disabled){background:#eaf0e7;border-color:#a7bfae}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #d19b3c;outline-offset:3px}.primary{background:var(--teal);color:white;border-color:var(--teal)}.primary:hover:not(:disabled){background:var(--dark)}.quiet{background:transparent}.small{font-size:12px}.muted{color:var(--muted)}.wrap{max-width:1440px;margin:auto;padding:0 32px}header{border-bottom:1px solid var(--line)}.nav{display:flex;align-items:center;justify-content:space-between;height:80px;gap:16px}.brand{display:flex;align-items:center;gap:11px;font-size:20px;font-weight:850;letter-spacing:-.6px}.mark{width:39px;height:39px;background:var(--ink);color:#f8f6e9;border-radius:12px;display:grid;place-items:center;font-family:Georgia,serif;font-size:31px}.nav-note{display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)}.dot{height:7px;width:7px;border-radius:50%;background:#499976}.hero{display:flex;justify-content:space-between;align-items:end;gap:24px;padding:34px 0 28px}.eyebrow{font-size:11px;font-weight:800;letter-spacing:2px;color:var(--teal)}h1{font-size:clamp(29px,3vw,43px);line-height:1.25;letter-spacing:-1.7px;margin:8px 0 10px}h2,h3,p{margin:0}h2{font-size:17px;letter-spacing:-.5px}h3{font-size:14px}.hero p{color:var(--muted);font-size:14px}.hero-tag{display:flex;align-items:center;gap:10px;font-size:12px;border:1px solid var(--line);border-radius:30px;padding:9px 14px;white-space:nowrap}.layout{display:grid;grid-template-columns:240px minmax(370px,1fr) 340px;gap:22px;align-items:start}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:0 3px 12px #264a3410}.stack{display:grid;gap:16px}.card-title{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:17px}.step{font-size:11px;font-weight:800;color:var(--teal);background:#e5eee5;border-radius:6px;padding:3px 7px}.field-label{display:block;font-size:12px;font-weight:700;margin:14px 0 6px}textarea{resize:vertical;min-height:165px;width:100%;padding:12px;font-size:11px;line-height:1.8;background:#f8faf5;border:1px solid var(--line);border-radius:9px;color:var(--ink);font-family:ui-monospace,monospace}select{width:100%;border:1px solid var(--line);border-radius:8px;padding:8px;background:var(--card);color:var(--ink);font-size:12px}.import-buttons{display:grid;gap:8px;margin-top:10px}.file-input{width:100%;font-size:11px;margin:8px 0 4px}.import-note{font-size:11px;color:var(--muted);margin-top:10px}.error{color:#a63735;background:#fff0ec;font-size:12px;padding:9px;border-radius:8px;display:none;margin-top:10px;overflow-wrap:anywhere}.notice{font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:13px;margin-top:14px}.privacy{display:flex;gap:9px;font-size:12px}.privacy-icon{font-size:24px}.board-card{padding:20px}.player{display:flex;align-items:center;gap:10px;margin-bottom:14px;min-width:0}.avatar{height:34px;width:34px;display:grid;place-items:center;border-radius:9px;background:#e4ebe2;font-size:24px}.player-name{font-size:13px;font-weight:750;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.player-info{min-width:0;flex:1}.player .muted{font-size:11px}.player-status{font-size:11px;color:var(--muted);max-width:50%;text-align:right}.board-area{display:flex;gap:10px}.eval-rail{width:19px;flex:none;position:relative;background:#294d40;border:1px solid #2c4b39;border-radius:5px;overflow:hidden}.eval-white{position:absolute;bottom:0;left:0;right:0;height:50%;background:#faf7e9;transition:height .35s}.eval-number{position:absolute;bottom:5px;left:0;right:0;text-align:center;font-size:9px;color:#163c32;z-index:1;font-weight:800;writing-mode:vertical-rl}.board{display:grid;grid-template-columns:repeat(8,1fr);aspect-ratio:1;width:100%;overflow:hidden;border-radius:5px;box-shadow:0 2px 6px #29453124}.square{position:relative;display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:var(--light);user-select:none}.square.dark{background:var(--square)}.piece{font-family:"Segoe UI Symbol","DejaVu Sans","Arial Unicode MS",serif;font-size:clamp(26px,3.7vw,61px);line-height:1;z-index:2}.piece.white{color:#fffef0;text-shadow:0 1px 1px #1b3529,-1px 0 #1b3529,1px 0 #1b3529,0 -1px #1b3529;filter:drop-shadow(0 2px 1px #21362945)}.piece.black{color:#193d30;text-shadow:0 1px 0 #d3e0c3;filter:drop-shadow(0 1px 1px #12332255)}.square.last:after{content:"";position:absolute;inset:0;background:#f1d66a80}.square.recommend:after{content:"";position:absolute;inset:5%;border:3px solid #146fdf;border-radius:5px;z-index:3}.square.check{background:#d77968}.coord{position:absolute;font-size:10px;font-weight:750;color:#355b45;z-index:4}.dark .coord{color:#f3f4e5}.rank{top:2px;left:4px}.file{bottom:1px;right:4px}.below-board{display:flex;align-items:center;justify-content:space-between;margin:14px 0 7px;gap:8px}.turn-label{font-size:12px;font-weight:750}.controls{display:flex;gap:6px;justify-content:center;margin-top:16px}.controls button{min-width:42px;padding:8px 10px}.controls .rotate{margin-left:auto}.position-caption{font-size:11px;color:var(--muted);text-align:center;margin-top:10px}.analysis-header{display:flex;align-items:center;gap:10px}.analysis-icon{background:#e4eee5;border-radius:10px;width:36px;height:36px;display:grid;place-items:center;font-size:20px}.mode-label{font-size:11px;color:var(--muted)}.engine-actions{display:flex;gap:8px;margin-top:16px}.engine-actions .primary{flex:1}.progress-wrap{margin-top:12px}.progress-line{display:flex;justify-content:space-between;font-size:11px;color:var(--muted)}progress{width:100%;height:6px;border:0;border-radius:10px;overflow:hidden;accent-color:var(--teal)}progress::-webkit-progress-bar{background:#e6ebe2}progress::-webkit-progress-value{background:var(--teal)}.score-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0}.score-box{background:#f1f4ec;border-radius:10px;padding:12px}.score-box .label{font-size:10px;color:var(--muted)}.score-box strong{display:block;font-size:25px;line-height:1.3;letter-spacing:-1px;margin-top:3px}.score-box .sub{font-size:10px;color:var(--muted)}.chart-wrap{height:92px;background:linear-gradient(to bottom,#f3f6ee 50%,#e6ece2 50%);border:1px solid var(--line);border-radius:8px;position:relative;overflow:hidden}.chart-wrap svg{width:100%;height:100%;display:block}.chart-empty{position:absolute;inset:0;display:grid;place-items:center;font-size:11px;color:var(--muted);pointer-events:none}.chart-label{display:flex;justify-content:space-between;font-size:10px;color:var(--muted);margin-top:5px}.review-title{font-size:12px;color:var(--muted);margin-bottom:7px}.move-grade{display:flex;align-items:center;justify-content:space-between;gap:8px}.move-grade strong{font-size:25px;line-height:1.3}.badge{font-size:11px;border-radius:5px;padding:3px 7px;font-weight:750;background:#e6eee3;color:var(--teal)}.badge.best{background:#dceee7;color:var(--best)}.badge.good{background:#edf1e2;color:var(--good)}.badge.inaccuracy{background:#fff1d1;color:#9c7317}.badge.mistake{background:#ffecd9;color:#b46722}.badge.blunder{background:#fde3df;color:#b04d48}.advice{font-size:13px;margin:12px 0;color:#496153}.recommend-box{border:1px solid #cbdccc;background:#f4f8ed;border-radius:10px;padding:11px;font-size:12px;display:flex;justify-content:space-between;gap:7px;align-items:center}.recommend-box strong{color:var(--teal);font-size:16px}.inspect{width:100%;font-size:11px;margin-top:9px}.detail{font-size:10px;color:var(--muted);margin-top:9px}.move-list{max-height:231px;overflow:auto;margin-top:12px;scrollbar-width:thin}.move-row{display:grid;grid-template-columns:28px 1fr 1fr;gap:4px;align-items:center;padding:4px 0;border-bottom:1px solid #edf0e8}.move-no{font-size:10px;color:var(--muted);text-align:center}.move-button{font-size:12px;padding:5px 7px;border:0;border-radius:6px;text-align:left;display:flex;align-items:center;justify-content:space-between;min-width:0}.move-button.current{background:#deebe0;color:var(--teal);box-shadow:inset 0 0 0 1px #a9c6ad}.grade-dot{height:6px;width:6px;background:var(--muted);border-radius:50%;flex:none;margin-left:4px}.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;font-size:10px;color:var(--muted)}.legend span{display:flex;align-items:center;gap:4px}.legend i{height:6px;width:6px;display:inline-block;border-radius:50%}.game-heading{overflow-wrap:anywhere;margin-bottom:12px}.game-heading h2{font-size:14px}.game-heading p{font-size:10px;color:var(--muted);margin-top:3px}.help{margin:25px 0 30px;border:1px solid var(--line);border-radius:14px;padding:18px 22px;background:#f0f3e9}summary{cursor:pointer;font-weight:700;font-size:13px}.help-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-top:13px}.help p,.help li{font-size:12px;color:#5a6e61}.help ol{padding-left:18px;margin:6px 0}footer{padding:0 0 26px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:10px}.source a{color:var(--teal)}.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}#live{min-height:19px;font-size:11px;color:var(--muted);margin-top:8px}.comment{font-size:11px;color:var(--muted);margin-top:9px;white-space:pre-wrap;overflow-wrap:anywhere;max-height:100px;overflow:auto}.mobile-import{display:none}
 @media(min-width:1440px){.piece{font-size:61px}}@media(max-width:1180px){.layout{grid-template-columns:210px minmax(340px,1fr) 290px;gap:15px}.wrap{padding:0 22px}.card{padding:16px}.piece{font-size:4.1vw}.hero-tag{display:none}.recommend-box{font-size:11px}}@media(max-width:1000px){.layout{grid-template-columns:minmax(330px,1fr) 320px}.import-column{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:16px}.import-column .privacy-card{display:none}.import-column .import-card{grid-column:1/-1}.import-card .import-content{display:grid;grid-template-columns:1fr 210px;gap:16px}.import-card textarea{min-height:94px}.import-card .card-title{margin-bottom:8px}.import-card .field-label{margin-top:0}.import-card .import-note{margin-top:7px}.piece{font-size:5.5vw}.hero{padding-top:24px}}@media(max-width:720px){.wrap{padding:0 16px}.nav{height:65px}.brand{font-size:18px}.mark{width:32px;height:32px;font-size:25px}.nav-note{font-size:10px}.hero{padding:23px 0 20px}.hero p{font-size:12px}.hero h1{font-size:31px}.layout{display:flex;flex-direction:column;gap:16px}.import-column,.board-column,.review-column{width:100%}.import-card .import-content{grid-template-columns:1fr 135px;gap:12px}.import-card textarea{min-height:125px}.import-card button{font-size:11px;padding:7px 9px}.import-card select{font-size:10px}.file-input{font-size:9px}.card{padding:16px}.board-card{padding:14px}.piece{font-size:9.5vw}.hero-tag{display:none}.review-column{display:grid;grid-template-columns:1fr 1fr;gap:12px}.review-column .engine-card{grid-column:1/-1}.review-column .moves-card{grid-column:1/-1}.engine-card .score-row{margin:14px 0}.engine-actions{margin-top:12px}.help-grid{grid-template-columns:1fr;gap:16px}.help{padding:16px}.help p,.help li{font-size:11px}footer{flex-direction:column;gap:6px}.controls button{padding:7px 9px}.player-status{max-width:43%}.review-column .review-card{grid-column:1/-1}.move-list{max-height:260px}}@media(max-width:720px){.nav{height:auto;min-height:72px;flex-wrap:wrap;gap:6px;padding-top:12px;padding-bottom:12px}.brand{white-space:nowrap;flex:none}.brand .small{font-size:10px}.nav-note{font-size:10px;white-space:nowrap}.import-card .import-content{grid-template-columns:minmax(0,1fr)}.import-card textarea{min-height:130px;font-size:12px}.import-card select{font-size:12px}.import-card button{font-size:12px;padding:9px 12px}.file-input{font-size:11px}.import-buttons{grid-template-columns:1fr 1fr}.import-content>div{min-width:0}.hero h1{word-break:keep-all}.controls{gap:4px}.controls button{min-width:36px}}@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
-</style></head><body><header><div class="wrap nav"><div class="brand"><span class="mark" aria-hidden="true">♞</span>한 수 복기<span class="small muted" style="font-weight:500;margin-left:5px">로컬 리뷰</span></div><div class="nav-note"><span class="dot"></span>무료 · 계정 없이 · 내 기기에서</div></div></header><main class="wrap"><section class="hero"><div><div class="eyebrow">한 수마다, 새로운 배움</div><h1>놓친 한 수를, 나의 다음 수로.</h1><p>PGN을 가져오면 로컬 엔진이 함께 복기해요. 대국은 브라우저 밖으로 나가지 않습니다.</p></div><div class="hero-tag"><span aria-hidden="true">♙</span>복잡한 구독 대신, 가벼운 배움</div></section><div class="layout"><aside class="stack import-column"><section class="card import-card"><div class="card-title"><h2>대국 가져오기</h2><span class="step">01</span></div><div class="import-content"><div><label for="pgn" class="field-label">PGN 기보 붙여넣기</label><textarea id="pgn" spellcheck="false" placeholder='[White "나"]&#10;[Black "상대"]&#10;&#10;1. e4 e5 2. Nf3 Nc6…' aria-describedby="importHint"></textarea><div id="error" class="error" role="alert"></div></div><div><div class="import-buttons"><button id="importBtn" class="primary">기보 불러오기</button><button id="exampleBtn">예제 대국 살펴보기</button></div><label for="file" class="field-label">또는 PGN 파일 열기</label><input id="file" class="file-input" type="file" accept=".pgn,.txt,text/plain"><label for="depth" class="field-label">분석 깊이 / 위치당 노드 한도</label><select id="depth"><option value="2">빠르게 · 깊이 2 / 8,000 노드</option><option value="3">조금 깊게 · 깊이 3 / 18,000 노드</option></select></div></div><p id="importHint" class="import-note">한 번에 한 대국, 최대 160 반수(80수). 주석과 변형은 읽되 주 변형만 분석합니다.</p><div id="live" role="status" aria-live="polite">예제를 먼저 둘러보세요.</div></section><section class="card privacy-card"><div class="privacy"><span class="privacy-icon" aria-hidden="true">⌁</span><div><h3>오직 내 브라우저에서</h3><p class="muted">기보 전송, 로그인, 광고, 추적이 없습니다. 새로고침하면 분석은 지워져요.</p></div></div><p class="notice">가벼운 자체 엔진으로 배우는 복기 도구입니다. Stockfish나 Chess.com 수준의 정밀 분석은 아닙니다.</p></section></aside><section class="stack board-column"><div class="card board-card"><div class="player"><div id="topAvatar" class="avatar" aria-hidden="true">♚</div><div class="player-info"><div id="topName" class="player-name">흑</div><div id="topMeta" class="muted">흑</div></div><div id="gameResult" class="player-status">예제 대국</div></div><div class="board-area"><div class="eval-rail" role="img" id="evalRail" aria-label="백 관점 평가, 미분석"><div id="evalWhite" class="eval-white"></div><div id="evalNumber" class="eval-number">?</div></div><div id="board" class="board" role="img" aria-label="체스판"></div></div><div class="below-board"><div class="player" style="margin:0"><div id="bottomAvatar" class="avatar" aria-hidden="true">♔</div><div class="player-info"><div id="bottomName" class="player-name">백</div><div id="bottomMeta" class="muted">백</div></div></div><span id="turnLabel" class="turn-label">백 차례</span></div><div class="controls" aria-label="기보 탐색"><button id="firstBtn" title="처음 (Home)" aria-label="처음으로">⏮</button><button id="prevBtn" title="이전 수 (←)" aria-label="이전 수">‹</button><button id="playBtn" title="자동 재생" aria-label="자동 재생">▶</button><button id="nextBtn" title="다음 수 (→)" aria-label="다음 수">›</button><button id="lastBtn" title="마지막 (End)" aria-label="마지막으로">⏭</button><button id="rotateBtn" class="rotate" title="체스판 회전" aria-label="체스판 회전">↻</button></div><p id="positionCaption" class="position-caption">시작 위치 · 방향키로 한 수씩 이동할 수 있어요</p></div><section class="card moves-card"><div class="card-title"><h2>대국의 흐름</h2><span id="movesCount" class="small muted">0 반수</span></div><div class="chart-wrap"><svg id="chart" viewBox="0 0 600 90" preserveAspectRatio="none" role="img" aria-label="백 관점 평가 그래프"></svg><div id="chartEmpty" class="chart-empty">분석하면 평가의 흐름이 나타납니다</div></div><div class="chart-label"><span>백 우세 ↑ · 흑 우세 ↓</span><span>반수별 평가 · ±5 폰 범위</span></div><div class="legend"><span><i style="background:var(--best)"></i>최선</span><span><i style="background:var(--good)"></i>좋음</span><span><i style="background:var(--inaccuracy)"></i>부정확</span><span><i style="background:var(--mistake)"></i>실수</span><span><i style="background:var(--blunder)"></i>큰 실수</span></div></section></section><aside class="stack review-column"><section class="card engine-card"><div class="analysis-header"><div class="analysis-icon" aria-hidden="true">✧</div><div><h2>나의 대국 리뷰</h2><div class="mode-label">경량 로컬 엔진 · 알파베타 탐색</div></div></div><div class="engine-actions"><button id="analyzeBtn" class="primary">전체 대국 분석</button><button id="cancelBtn" disabled>취소</button></div><div class="progress-wrap"><div class="progress-line"><span id="progressText">분석 준비 완료</span><span id="progressPercent">0%</span></div><progress id="progress" max="1" value="0" aria-label="분석 진행률"></progress></div><div class="score-row"><div class="score-box"><div class="label">백 · 근사 정확도</div><strong id="whiteAccuracy">—</strong><div class="sub" id="whiteCount">분석 후 표시</div></div><div class="score-box"><div class="label">흑 · 근사 정확도</div><strong id="blackAccuracy">—</strong><div class="sub" id="blackCount">분석 후 표시</div></div></div><p class="small muted" style="font-size:10px">정확도는 평균 점수 손실에 따른 자체 휴리스틱입니다. 공식 레이팅이나 Chess.com 정확도와 비교하지 마세요.</p><div id="engineStats" class="detail">깊이 2부터 시작 · 추천은 실제 수를 두기 전 위치 기준</div></section><section class="card review-card"><div class="review-title" id="reviewTitle">한 수씩 배워보기</div><div class="move-grade"><strong id="playedMove">시작 위치</strong><span id="gradeBadge" class="badge">미분석</span></div><p id="advice" class="advice">전체 대국 분석을 누르면 실제로 계산한 평가와 추천 수를 확인할 수 있어요.</p><div class="recommend-box"><span>두기 전 추천 수</span><strong id="bestMove">—</strong></div><button id="inspectBtn" class="inspect" disabled>추천 위치 보기</button><div id="moveDetail" class="detail">점수는 백 관점입니다. +는 백 우세, −는 흑 우세.</div><p id="comment" class="comment"></p></section><section class="card"><div class="game-heading"><h2 id="eventName">예제 대국</h2><p id="eventMeta">기보를 불러오면 대국 정보가 표시됩니다</p></div><div class="card-title" style="margin-bottom:0"><h2>수 목록</h2><button id="jumpIssue" class="quiet" style="font-size:10px;padding:4px 8px" disabled>다음 실수 ↗</button></div><div id="moveList" class="move-list" aria-label="기보 수 목록"></div></section></aside></div><details class="help"><summary>PGN은 어떻게 가져오나요? · 분석을 읽는 방법</summary><div class="help-grid"><div><h3>Chess.com 대국을 직접 내보내기</h3><ol><li>Chess.com에서 내 대국 기록의 완료된 대국을 엽니다.</li><li>대국 화면의 공유 또는 다운로드 메뉴에서 PGN을 찾습니다. 메뉴 위치는 서비스 버전에 따라 달라질 수 있습니다.</li><li>PGN 텍스트를 복사하거나 파일로 저장한 뒤 여기에 붙여넣거나 선택하세요.</li></ol><p>이 도구는 Chess.com과 무관한 비공식 독립 도구입니다. 유료 기능에 접근하거나 우회하지 않으며, 다른 서비스의 분석을 복제하지 않습니다.</p></div><div><h3>가벼운 엔진, 투명한 기준</h3><p>기물 가치, 중앙 제어와 전진을 평가하는 로컬 알파베타 엔진입니다. 반복 심화로 완료된 깊이만 사용합니다. 노드 한도에 닿으면 더 낮은 깊이 결과를 표시하며, 체크메이트는 별도로 표시합니다. 장기 전술, 반복 무승부 예측과 포지션 이해는 강한 엔진보다 제한적입니다.</p><p style="margin-top:7px">같은 깊이에서 추천 수와 실제 수의 이후 평가를 비교합니다. 손실 15cp 이하: 좋음, 60cp 이상: 부정확, 120cp 이상: 실수, 250cp 이상: 큰 실수. 동일한 최선 평가: 최선. 100cp ≈ 폰 1개. 근사 정확도 = 100 × exp(−평균 손실 / 250), 최대 손실 1,000cp로 제한합니다.</p></div></div></details><footer><span>한 수 복기 · 더 좋은 다음 수를 위한 작은 공간 · 로컬 메모리만 사용</span><span class="source">합법 수 검증: <a href="https://github.com/jhlywa/chess.js/tree/v0.13.4" target="_blank" rel="noopener noreferrer">chess.js 0.13.4</a> · BSD-2-Clause · 라이선스는 소스에 포함</span></footer></main>
+
+/* Original inline SVG pieces: no remote images or proprietary assets. */
+.piece{display:grid;place-items:center;width:100%;height:100%;font-size:inherit!important;filter:none!important;text-shadow:none!important}.piece svg{display:block;width:86%;height:86%;filter:drop-shadow(0 1px 1px #20332730);pointer-events:none}.avatar svg{width:30px;height:30px}.mark svg{width:32px;height:32px}
+</style></head><body><header><div class="wrap nav"><div class="brand"><span class="mark" aria-hidden="true">♞</span>한 수 복기<span class="small muted" style="font-weight:500;margin-left:5px">로컬 리뷰</span></div><div class="nav-note"><span class="dot"></span>무료 · 계정 없이 · 내 기기에서</div></div></header><main class="wrap"><section class="hero"><div><div class="eyebrow">한 수마다, 새로운 배움</div><h1>놓친 한 수를, 나의 다음 수로.</h1><p>기보를 복기하거나 직접 수를 두며 즉시 피드백을 받아 보세요. 분석은 내 브라우저 안에서만 이루어집니다.</p></div><div class="hero-tag"><span aria-hidden="true">♙</span>복잡한 구독 대신, 가벼운 배움</div></section><div class="layout"><aside class="stack import-column"><section class="card import-card"><div class="card-title"><h2>대국 가져오기</h2><span class="step">01</span></div><div class="import-content"><div><label for="pgn" class="field-label">PGN 기보 붙여넣기</label><textarea id="pgn" spellcheck="false" placeholder='[White "나"]&#10;[Black "상대"]&#10;&#10;1. e4 e5 2. Nf3 Nc6…' aria-describedby="importHint"></textarea><div id="error" class="error" role="alert"></div></div><div><div class="import-buttons"><button id="importBtn" class="primary">기보 불러오기</button><button id="exampleBtn">예제 대국 살펴보기</button></div><label for="file" class="field-label">또는 PGN 파일 열기</label><input id="file" class="file-input" type="file" accept=".pgn,.txt,text/plain"><label for="depth" class="field-label">분석 깊이 / 위치당 노드 한도</label><select id="depth"><option value="2">빠르게 · 깊이 2 / 8,000 노드</option><option value="3">조금 깊게 · 깊이 3 / 18,000 노드</option></select></div></div><p id="importHint" class="import-note">한 번에 한 대국, 최대 160 반수(80수). 주석과 변형은 읽되 주 변형만 분석합니다.</p><div id="live" role="status" aria-live="polite">예제를 먼저 둘러보세요.</div></section><section class="card privacy-card"><div class="privacy"><span class="privacy-icon" aria-hidden="true">⌁</span><div><h3>오직 내 브라우저에서</h3><p class="muted">기보 전송, 로그인, 광고, 추적이 없습니다. 새로고침하면 분석은 지워져요.</p></div></div><p class="notice">가벼운 자체 엔진으로 배우는 복기 도구입니다. Stockfish나 Chess.com 수준의 정밀 분석은 아닙니다.</p></section></aside><section class="stack board-column"><div class="card board-card"><div class="player"><div id="topAvatar" class="avatar" aria-hidden="true">♚</div><div class="player-info"><div id="topName" class="player-name">흑</div><div id="topMeta" class="muted">흑</div></div><div id="gameResult" class="player-status">예제 대국</div></div><div class="board-area"><div class="eval-rail" role="img" id="evalRail" aria-label="백 관점 평가, 미분석"><div id="evalWhite" class="eval-white"></div><div id="evalNumber" class="eval-number">?</div></div><div id="board" class="board" role="img" aria-label="체스판"></div></div><div class="below-board"><div class="player" style="margin:0"><div id="bottomAvatar" class="avatar" aria-hidden="true">♔</div><div class="player-info"><div id="bottomName" class="player-name">백</div><div id="bottomMeta" class="muted">백</div></div></div><span id="turnLabel" class="turn-label">백 차례</span></div><div class="controls" aria-label="기보 탐색"><button id="firstBtn" title="처음 (Home)" aria-label="처음으로">⏮</button><button id="prevBtn" title="이전 수 (←)" aria-label="이전 수">‹</button><button id="playBtn" title="자동 재생" aria-label="자동 재생">▶</button><button id="nextBtn" title="다음 수 (→)" aria-label="다음 수">›</button><button id="lastBtn" title="마지막 (End)" aria-label="마지막으로">⏭</button><button id="rotateBtn" class="rotate" title="체스판 회전" aria-label="체스판 회전">↻</button></div><p id="positionCaption" class="position-caption">시작 위치 · 방향키로 한 수씩 이동할 수 있어요</p></div><section class="card moves-card"><div class="card-title"><h2>대국의 흐름</h2><span id="movesCount" class="small muted">0 반수</span></div><div class="chart-wrap"><svg id="chart" viewBox="0 0 600 90" preserveAspectRatio="none" role="img" aria-label="백 관점 평가 그래프"></svg><div id="chartEmpty" class="chart-empty">분석하면 평가의 흐름이 나타납니다</div></div><div class="chart-label"><span>백 우세 ↑ · 흑 우세 ↓</span><span>반수별 평가 · ±5 폰 범위</span></div><div class="legend"><span><i style="background:var(--best)"></i>최선</span><span><i style="background:var(--good)"></i>좋음</span><span><i style="background:var(--inaccuracy)"></i>부정확</span><span><i style="background:var(--mistake)"></i>실수</span><span><i style="background:var(--blunder)"></i>큰 실수</span></div></section></section><aside class="stack review-column"><section class="card engine-card"><div class="analysis-header"><div class="analysis-icon" aria-hidden="true">✧</div><div><h2>나의 대국 리뷰</h2><div class="mode-label">경량 로컬 엔진 · 알파베타 탐색</div></div></div><div class="engine-actions"><button id="analyzeBtn" class="primary">전체 대국 분석</button><button id="cancelBtn" disabled>취소</button></div><div class="progress-wrap"><div class="progress-line"><span id="progressText">분석 준비 완료</span><span id="progressPercent">0%</span></div><progress id="progress" max="1" value="0" aria-label="분석 진행률"></progress></div><div class="score-row"><div class="score-box"><div class="label">백 · 근사 정확도</div><strong id="whiteAccuracy">—</strong><div class="sub" id="whiteCount">분석 후 표시</div></div><div class="score-box"><div class="label">흑 · 근사 정확도</div><strong id="blackAccuracy">—</strong><div class="sub" id="blackCount">분석 후 표시</div></div></div><p class="small muted" style="font-size:10px">정확도는 평균 점수 손실에 따른 자체 휴리스틱입니다. 공식 레이팅이나 Chess.com 정확도와 비교하지 마세요.</p><div id="engineStats" class="detail">깊이 2부터 시작 · 추천은 실제 수를 두기 전 위치 기준</div></section><section class="card review-card"><div class="review-title" id="reviewTitle">한 수씩 배워보기</div><div class="move-grade"><strong id="playedMove">시작 위치</strong><span id="gradeBadge" class="badge">미분석</span></div><p id="advice" class="advice">전체 대국 분석을 누르면 실제로 계산한 평가와 추천 수를 확인할 수 있어요.</p><div class="recommend-box"><span>두기 전 추천 수</span><strong id="bestMove">—</strong></div><button id="inspectBtn" class="inspect" disabled>추천 위치 보기</button><div id="moveDetail" class="detail">점수는 백 관점입니다. +는 백 우세, −는 흑 우세.</div><p id="comment" class="comment"></p></section><section class="card"><div class="game-heading"><h2 id="eventName">예제 대국</h2><p id="eventMeta">기보를 불러오면 대국 정보가 표시됩니다</p></div><div class="card-title" style="margin-bottom:0"><h2>수 목록</h2><button id="jumpIssue" class="quiet" style="font-size:10px;padding:4px 8px" disabled>다음 실수 ↗</button></div><div id="moveList" class="move-list" aria-label="기보 수 목록"></div></section></aside></div><details class="help"><summary>PGN은 어떻게 가져오나요? · 분석을 읽는 방법</summary><div class="help-grid"><div><h3>Chess.com 대국을 직접 내보내기</h3><ol><li>Chess.com에서 내 대국 기록의 완료된 대국을 엽니다.</li><li>대국 화면의 공유 또는 다운로드 메뉴에서 PGN을 찾습니다. 메뉴 위치는 서비스 버전에 따라 달라질 수 있습니다.</li><li>PGN 텍스트를 복사하거나 파일로 저장한 뒤 여기에 붙여넣거나 선택하세요.</li></ol><p>이 도구는 Chess.com과 무관한 비공식 독립 도구입니다. 유료 기능에 접근하거나 우회하지 않으며, 다른 서비스의 분석을 복제하지 않습니다.</p></div><div><h3>가벼운 엔진, 투명한 기준</h3><p>기물 가치, 중앙 제어와 전진을 평가하는 로컬 알파베타 엔진입니다. 반복 심화로 완료된 깊이만 사용합니다. 노드 한도에 닿으면 더 낮은 깊이 결과를 표시하며, 체크메이트는 별도로 표시합니다. 장기 전술, 반복 무승부 예측과 포지션 이해는 강한 엔진보다 제한적입니다.</p><p style="margin-top:7px">같은 깊이에서 추천 수와 실제 수의 이후 평가를 비교합니다. 손실 15cp 이하: 좋음, 60cp 이상: 부정확, 120cp 이상: 실수, 250cp 이상: 큰 실수. 동일한 최선 평가: 최선. 100cp ≈ 폰 1개. 근사 정확도 = 100 × exp(−평균 손실 / 250), 최대 손실 1,000cp로 제한합니다.</p></div></div></details><footer><span>한 수 복기 · 더 좋은 다음 수를 위한 작은 공간 · 로컬 메모리만 사용</span><span class="source">합법 수 검증: <a href="https://github.com/jhlywa/chess.js/tree/v0.13.4" target="_blank" rel="noopener noreferrer">chess.js 0.13.4</a> · BSD-2-Clause · 라이선스는 소스에 포함</span></footer></main>
 <script id="chess-library">
 // Embedded from https://raw.githubusercontent.com/jhlywa/chess.js/v0.13.4/chess.js
 // Source: https://github.com/jhlywa/chess.js/tree/v0.13.4
@@ -2075,9 +2078,21 @@ function category(r){if(!r||r.loss===null)return null;if(r.loss<=0)return 'best'
 function scoreText(cp){if(cp===null||cp===undefined)return '—';if(Math.abs(cp)>29000)return cp>0?'백 M':'흑 M';return (cp>=0?'+':'')+(cp/100).toFixed(2);}
 function goto(n){preview=false;index=Math.max(0,Math.min(game.moves.length,n));render();}
 function render(){if(!game)return;renderBoard();renderReview();renderScores();renderChart();updateMoveList();$('movesCount').textContent=game.moves.length+' 반수';$('eventName').textContent=game.headers.Event||'나의 대국';$('eventMeta').textContent=[game.headers.Date,game.headers.Site].filter(Boolean).join(' · ')||'로컬 기보';$('gameResult').textContent='대국 결과 '+game.result;$('firstBtn').disabled=index===0;$('prevBtn').disabled=index===0;$('nextBtn').disabled=index===game.moves.length;$('lastBtn').disabled=index===game.moves.length;$('jumpIssue').disabled=!results.some(r=>r&&r.loss>=120);}
+function pieceSvg(type,color){
+ const shapes={
+ p:'<circle cx="32" cy="17" r="8"/><path d="M25 26h14l-2 9 7 14H20l7-14z"/><path d="M18 50h28v7H18z"/>',
+ r:'<path d="M18 9h8v9h12V9h8v16l-7 5v17H25V30l-7-5z"/><path d="M21 45h22v5H21zM16 51h32v7H16z"/>',
+ n:'<path d="M19 49c2-10 7-17 19-20l-11-2-5 5-8-7 8-13 10-4 7-5 1 10c11 10 12 24 9 36z"/><path d="M16 51h34v7H16z"/><circle cx="30" cy="18" r="2" fill="var(--piece-line)" stroke="none"/><path d="m17 24 6 2" fill="none"/>',
+ b:'<path d="M32 6c-7 7-14 13-14 20 0 7 7 11 14 11s14-4 14-11C46 19 39 13 32 6z"/><path d="m36 17-9 10" fill="none"/><path d="M27 36h10l5 12H22zM18 51h28v7H18z"/>',
+ q:'<path d="m15 19 7 25h20l7-25-12 11-5-16-5 16z"/><circle cx="13" cy="15" r="4"/><circle cx="32" cy="10" r="4"/><circle cx="51" cy="15" r="4"/><path d="M22 45h20v5H22zM17 51h30v7H17z"/>',
+ k:'<path d="M29 5h6v7h7v6h-7v8h-6v-8h-7v-6h7z"/><path d="M18 27c0-7 8-9 14-4 6-5 14-3 14 4 0 5-6 12-8 18H26c-2-6-8-13-8-18z"/><path d="M22 45h20v5H22zM17 51h30v7H17z"/>'
+ };
+ const fill=color==='w'?'#fffdf4':'#28382f',line=color==='w'?'#263c30':'#e4e9d6';
+ return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" aria-hidden="true" focusable="false" style="--piece-line:'+line+'" fill="'+fill+'" stroke="'+line+'" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round">'+(shapes[type]||shapes.p)+'</svg>';
+}
 function renderBoard(){const view=preview&&index>0?index-1:index,position=new Chess(game.fens[view]),status=game.states[view],best=preview?results[index-1]?.best:null,last=!preview&&view>0?game.moves[view-1]:null,files=flipped?'hgfedcba':'abcdefgh',ranks=flipped?'12345678':'87654321',frag=document.createDocumentFragment();let pieceLabels=[];
- for(let row=0;row<8;row++)for(let col=0;col<8;col++){const square=files[col]+ranks[row],p=position.get(square),cell=document.createElement('div');cell.className='square'+(((square.charCodeAt(0)-97+Number(square[1]))%2===1)?' dark':'');if(last&&(square===last.from||square===last.to))cell.classList.add('last');if(best&&(square===best.from||square===best.to))cell.classList.add('recommend');if(p&&p.type==='k'&&p.color===status.turn&&status.check)cell.classList.add('check');if(p){const el=document.createElement('span');el.className='piece '+(p.color==='w'?'white':'black');el.textContent=PIECES[p.type];el.setAttribute('aria-hidden','true');cell.append(el);pieceLabels.push(square+' '+(p.color==='w'?'백 ':'흑 ')+NAMES[p.type]);}if(col===0){const el=document.createElement('span');el.className='coord rank';el.textContent=ranks[row];cell.append(el);}if(row===7){const el=document.createElement('span');el.className='coord file';el.textContent=files[col];cell.append(el);}frag.append(cell);}
- $('board').replaceChildren(frag);$('board').setAttribute('aria-label',(flipped?'흑':'백')+' 방향 체스판. '+pieceLabels.join(', '));const top=flipped?'White':'Black',bottom=flipped?'Black':'White';for(const [where,color]of [['top',top],['bottom',bottom]]){$(where+'Name').textContent=game.headers[color]||(color==='White'?'백':'흑');$(where+'Meta').textContent=(color==='White'?'백':'흑')+(game.headers[color+'Elo']?' · '+game.headers[color+'Elo']:'');$(where+'Avatar').textContent=color==='White'?'♔':'♚';}
+ for(let row=0;row<8;row++)for(let col=0;col<8;col++){const square=files[col]+ranks[row],p=position.get(square),cell=document.createElement('div');cell.className='square'+(((square.charCodeAt(0)-97+Number(square[1]))%2===1)?' dark':'');if(last&&(square===last.from||square===last.to))cell.classList.add('last');if(best&&(square===best.from||square===best.to))cell.classList.add('recommend');if(p&&p.type==='k'&&p.color===status.turn&&status.check)cell.classList.add('check');if(p){const el=document.createElement('span');el.className='piece '+(p.color==='w'?'white':'black');el.innerHTML=pieceSvg(p.type,p.color);el.setAttribute('aria-hidden','true');cell.append(el);pieceLabels.push(square+' '+(p.color==='w'?'백 ':'흑 ')+NAMES[p.type]);}if(col===0){const el=document.createElement('span');el.className='coord rank';el.textContent=ranks[row];cell.append(el);}if(row===7){const el=document.createElement('span');el.className='coord file';el.textContent=files[col];cell.append(el);}frag.append(cell);}
+ $('board').replaceChildren(frag);$('board').setAttribute('aria-label',(flipped?'흑':'백')+' 방향 체스판. '+pieceLabels.join(', '));const top=flipped?'White':'Black',bottom=flipped?'Black':'White';for(const [where,color]of [['top',top],['bottom',bottom]]){$(where+'Name').textContent=game.headers[color]||(color==='White'?'백':'흑');$(where+'Meta').textContent=(color==='White'?'백':'흑')+(game.headers[color+'Elo']?' · '+game.headers[color+'Elo']:'');$(where+'Avatar').innerHTML=pieceSvg('k',color==='White'?'w':'b');}
  let stateText=status.turn==='w'?'백 차례':'흑 차례';if(status.mate)stateText=(status.turn==='w'?'흑':'백')+' 체크메이트 승';else if(status.draw)stateText=status.stalemate?'스테일메이트 · 무승부':status.repetition?'3회 반복 · 무승부 조건':status.insufficient?'기물 부족 · 무승부':'50수 규칙 · 무승부 조건';else if(status.check)stateText+=' · 체크';$('turnLabel').textContent=stateText;$('positionCaption').textContent=preview?'추천 전 위치 · 파란 테두리는 추천 수의 출발 / 도착 칸':view===0?'시작 위치 · ← → 방향키로 탐색':view+' / '+game.moves.length+' 반수 · 마지막 수 '+game.moves[view-1].san;
  const val=results[view]?.value;$('evalWhite').style.height=val===undefined?'50%':(50+45*Math.tanh(val/500))+'%';$('evalNumber').textContent=val===undefined?'?':scoreText(val);$('evalRail').setAttribute('aria-label','백 관점 평가 '+(val===undefined?'미분석':scoreText(val)));}
 function renderReview(){const r=index>0?results[index-1]:null,move=index>0?game.moves[index-1]:null,grade=category(r);$('reviewTitle').textContent=move?(move.color==='w'?'백':'흑')+'의 '+(Number(game.fens[index-1].split(' ')[5]))+'번째 수':'한 수씩 배워보기';$('playedMove').textContent=move?move.san:'시작 위치';$('gradeBadge').className='badge'+(grade?' '+grade:'');$('gradeBadge').textContent=grade?GRADES[grade][0]:r?.terminal?'종료 위치':'미분석';$('bestMove').textContent=r?.best?.san||'—';$('inspectBtn').disabled=!r?.best;$('inspectBtn').textContent=preview?'실제 수 위치로 돌아가기':'추천 위치 보기';$('comment').textContent=game.comments[index]?'PGN 주석 · '+game.comments[index]:'';
@@ -2091,4 +2106,255 @@ function startAnalysis(){if(!game||running)return;stopPlay();results=[];preview=
 $('importBtn').addEventListener('click',()=>importGame($('pgn').value));$('exampleBtn').addEventListener('click',()=>{$('pgn').value=EXAMPLE;importGame(EXAMPLE);});$('file').addEventListener('change',async e=>{const f=e.target.files[0];if(!f)return;if(f.size>200000){fail('200KB 이하의 PGN 파일을 선택하세요.');e.target.value='';return;}try{const t=await f.text();$('pgn').value=t;importGame(t);}catch{fail('UTF-8 PGN 파일을 선택하세요.');}e.target.value='';});$('analyzeBtn').addEventListener('click',startAnalysis);$('cancelBtn').addEventListener('click',()=>{stopWorker();$('progressText').textContent='취소됨 · 완료된 위치 유지';announce('취소했습니다. 다시 분석하면 처음부터 계산합니다.');render();});$('depth').addEventListener('change',()=>announce('다음 분석에 깊이 '+$('depth').value+'를 적용합니다. 기존 결과는 바뀌지 않습니다.'));
 $('firstBtn').addEventListener('click',()=>{stopPlay();goto(0);});$('prevBtn').addEventListener('click',()=>{stopPlay();goto(index-1);});$('nextBtn').addEventListener('click',()=>{stopPlay();goto(index+1);});$('lastBtn').addEventListener('click',()=>{stopPlay();goto(game.moves.length);});$('rotateBtn').addEventListener('click',()=>{flipped=!flipped;renderBoard();announce((flipped?'흑':'백')+' 방향으로 회전했습니다.');});$('inspectBtn').addEventListener('click',()=>{stopPlay();preview=!preview;render();});$('playBtn').addEventListener('click',()=>{if(playTimer){stopPlay();return;}if(index===game.moves.length)goto(0);$('playBtn').textContent='Ⅱ';$('playBtn').setAttribute('aria-label','재생 일시 정지');playTimer=setInterval(()=>{if(index>=game.moves.length){stopPlay();return;}goto(index+1);},900);});$('jumpIssue').addEventListener('click',()=>{stopPlay();for(let d=1;d<=game.moves.length;d++){const n=(index+d-1)%game.moves.length+1;if(results[n-1]?.loss>=120){goto(n);return;}}});$('chart').addEventListener('click',e=>{const rect=$('chart').getBoundingClientRect();stopPlay();goto(Math.round((e.clientX-rect.left)/rect.width*game.moves.length));});document.addEventListener('keydown',e=>{if(['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)||e.ctrlKey||e.metaKey||e.altKey)return;const actions={ArrowLeft:()=>goto(index-1),ArrowRight:()=>goto(index+1),Home:()=>goto(0),End:()=>goto(game.moves.length)};if(actions[e.key]){e.preventDefault();stopPlay();actions[e.key]();}});window.addEventListener('beforeunload',()=>{stopWorker();stopPlay();});$('pgn').value=EXAMPLE;importGame(EXAMPLE);
 
-</script></body></html>
+</script><script>
+/* Append after the app script. Requires Chess, $, game/index, stopPlay,
+   stopWorker, category, GRADES, scoreText and pieceSvg(type, color). */
+(() => {
+  'use strict';
+  const layout = document.querySelector('.layout');
+  if (!layout || typeof pieceSvg !== 'function') throw Error('직접 두기: pieceSvg와 기존 앱이 필요합니다.');
+  const names = {p:'폰', n:'나이트', b:'비숍', r:'룩', q:'퀸', k:'킹'};
+  const colorName = c => c === 'w' ? '백' : '흑';
+  let active = false, chess = new Chess(), baseFen = chess.fen(), records = [];
+  let selected = null, targets = [], busy = false, job = 0, engine = null, engineUrl = null;
+  let inspect = -1, promotion = null, origin = '표준 시작 위치';
+  const style = document.createElement('style');
+  style.textContent = `
+    .layout[hidden],.practice-view[hidden]{display:none!important}
+    .mode-switch{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:0 0 20px}
+    .mode-switch button[aria-pressed=true]{background:var(--teal);color:white;border-color:var(--teal)}
+    .mode-switch .practice-copy{margin-left:auto;font-size:12px}
+    .practice-view{display:grid;grid-template-columns:minmax(320px,1fr) 340px;gap:22px;max-width:1090px;margin:0 auto}
+    .practice-view .board-card{min-width:0}.practice-view .board-area>.board{flex:1;min-width:0}
+    .practice-view .square{padding:0;border:0;border-radius:0;color:inherit;min-width:0;overflow:visible}
+    .practice-view .square:hover:not(:disabled){background:var(--light);border:0}
+    .practice-view .square.dark:hover:not(:disabled){background:var(--square)}
+    .practice-view .square:disabled{opacity:1;cursor:wait}
+    .practice-view .square:focus-visible{outline:3px solid #e7a92e;outline-offset:-3px;z-index:5}
+    .practice-view .square.selected{box-shadow:inset 0 0 0 4px #dbab32}
+    .practice-view .piece{display:flex;align-items:center;justify-content:center;width:86%;height:86%;font-size:inherit;pointer-events:none;text-shadow:none}
+    .practice-view .piece svg{width:100%;height:100%;display:block}
+    .practice-view .legal-dot{position:absolute;width:23%;height:23%;border-radius:50%;background:#174d4580;z-index:4;pointer-events:none}
+    .practice-view .legal-capture{position:absolute;inset:4%;border:4px solid #174d4580;border-radius:50%;z-index:4;pointer-events:none}
+    .practice-controls{display:flex;gap:8px;flex-wrap:wrap;margin-top:16px}.practice-controls button{flex:1;font-size:12px;white-space:nowrap}
+    .practice-heading{margin-bottom:12px}.practice-detail{font-size:12px;color:var(--muted);line-height:1.8;margin-top:12px;overflow-wrap:anywhere}.practice-note{font-size:12px;color:var(--muted);margin-top:8px}
+    .practice-status{min-height:40px;font-size:12px;color:var(--muted);margin-top:12px}
+    .practice-spinner{display:inline-block;width:12px;height:12px;border:2px solid #cbdccc;border-top-color:var(--teal);border-radius:50%;animation:practice-spin .7s linear infinite;vertical-align:-1px;margin-right:6px}
+    @keyframes practice-spin{to{transform:rotate(360deg)}}
+    .practice-list{max-height:245px;overflow:auto;margin-top:10px}.practice-list button{width:100%;margin:3px 0}
+    .practice-promotion{border:1px solid var(--line);border-radius:16px;padding:24px;background:var(--card);color:var(--ink);max-width:calc(100vw - 32px)}
+    .practice-promotion::backdrop{background:#123f3570}.promotion-choices{display:flex;gap:8px;margin:18px 0}
+    .promotion-choices button{display:grid;justify-items:center;min-width:60px;font-size:12px}.promotion-choices svg{width:42px;height:42px}
+    @media(max-width:1000px){.practice-view{grid-template-columns:minmax(300px,1fr) 300px;gap:16px}}
+    @media(max-width:720px){.practice-view{grid-template-columns:minmax(0,1fr);gap:16px}.mode-switch .practice-copy{margin-left:0}.practice-controls{gap:6px}.practice-view .stack{gap:12px}}
+    @media(prefers-reduced-motion:reduce){.practice-spinner{animation:none}}
+  `;
+  document.head.append(style);
+  const modes = document.createElement('nav');
+  modes.className = 'mode-switch'; modes.setAttribute('aria-label', '사용 모드');
+  modes.innerHTML = '<button type="button" aria-pressed="true">기보 리뷰</button><button type="button" aria-pressed="false">직접 두기</button><button type="button" class="practice-copy">현재 위치에서 연습</button>';
+  const [reviewTab, playTab, copyButton] = modes.children;
+  const view = document.createElement('section');
+  view.className = 'practice-view'; view.hidden = true; view.id = 'practiceView';
+  view.setAttribute('aria-label', '직접 두기 연습');
+  view.innerHTML = `
+    <section class="card board-card">
+      <div class="practice-heading"><h2>직접 두며, 한 수씩 배워요</h2><p class="practice-note">백과 흑을 모두 직접 둡니다. AI 상대는 없어요. 기물을 선택한 뒤 표시된 칸을 누르세요.</p></div>
+      <div class="player"><div class="player-info"><div class="player-name">흑</div><div class="muted">직접 두는 쪽</div></div><span class="player-status" data-practice="origin"></span></div>
+      <div class="board-area"><div class="eval-rail" role="img" data-practice="rail" aria-label="백 관점 평가, 미분석"><div class="eval-white" data-practice="white"></div><div class="eval-number" data-practice="number">?</div></div><div class="board" data-practice="board" role="group" aria-label="백 방향 연습 체스판"></div></div>
+      <div class="below-board"><strong class="turn-label">백 · 직접 두는 쪽</strong><span class="turn-label" data-practice="turn"></span></div>
+      <div class="practice-controls"><button type="button" data-practice="undo">한 수 무르기</button><button type="button" data-practice="reset">연습 시작으로</button><button type="button" data-practice="new">새 대국</button></div>
+      <div class="practice-status" data-practice="status" role="status" aria-live="polite"></div>
+      <p class="practice-note">최대 160 반수 · 새로고침 시 연습은 지워집니다. 가져온 PGN과 리뷰 결과는 바꾸지 않아요.</p>
+    </section>
+    <div class="stack">
+      <section class="card"><h2>한 수 즉시 분석</h2><p class="practice-note">경량 로컬 엔진 · 추천과 손실은 두기 전 위치 기준</p><label class="field-label" for="practiceDepth">다음 수 분석 깊이</label><select id="practiceDepth" data-practice="depth"></select><p class="practice-note">경량 엔진의 제한된 분석입니다. +는 백 우세, −는 흑 우세입니다. 현재 위치 평가는 더 깊게 계산하므로 수 비교 점수와 다를 수 있어요.</p></section>
+      <section class="card"><div class="review-title" data-practice="title">나의 첫 수</div><div class="move-grade"><strong data-practice="move">시작 위치</strong><span class="badge" data-practice="grade">미분석</span></div><p class="advice" data-practice="advice">한 수를 두면 실제 점수 손실과 추천 수를 계산합니다.</p><div class="recommend-box"><span>두기 전 추천 수</span><strong data-practice="best">—</strong></div><div class="practice-detail" data-practice="detail"></div><button type="button" class="inspect" data-practice="retry" hidden>이 수 분석 다시 시도</button></section>
+      <section class="card"><div class="card-title"><h2>연습 수 목록</h2><span class="small muted" data-practice="count">0 / 160 반수</span></div><p class="practice-note">목록을 누르면 해당 수의 피드백을 봅니다. 체스판은 마지막 위치를 유지합니다.</p><div class="practice-list" data-practice="list" aria-label="연습 수 목록"></div></section>
+    </div>`;
+  layout.before(modes, view);
+  const el = key => view.querySelector(`[data-practice="${key}"]`);
+  const depth = el('depth');
+  depth.innerHTML = $('depth').innerHTML; depth.value = $('depth').value || '2';
+  depth.addEventListener('change', () => { $('depth').value = depth.value; });
+  const dialog = document.createElement('dialog');
+  dialog.className = 'practice-promotion'; dialog.setAttribute('aria-labelledby', 'practicePromotionTitle');
+  dialog.innerHTML = '<h2 id="practicePromotionTitle">승격할 기물을 선택하세요</h2><p class="practice-note">선택하기 전에는 수를 두지 않습니다.</p><div class="promotion-choices"></div><button type="button" class="quiet">취소</button>';
+  document.body.append(dialog);
+  const cancelPromotion = () => {
+    const source = promotion?.from; promotion = null;
+    if (dialog.open) dialog.close();
+    if (source && active) focusSquare(source);
+  };
+  dialog.lastElementChild.addEventListener('click', cancelPromotion);
+  dialog.addEventListener('cancel', e => { e.preventDefault(); cancelPromotion(); });
+  function focusSquare(square) { el('board').querySelector(`[data-square="${square}"]`)?.focus(); }
+  function releaseWorker() {
+    if (engine) engine.terminate(); engine = null;
+    if (engineUrl) URL.revokeObjectURL(engineUrl); engineUrl = null;
+  }
+  function cancelJob() {
+    ++job; releaseWorker();
+    if (busy && records.length) records.at(-1).state = 'cancelled';
+    busy = false; selected = null; targets = []; cancelPromotion();
+  }
+  function switchMode(wantPlay) {
+    stopPlay(); stopWorker(); cancelJob();
+    active = wantPlay; layout.hidden = active; view.hidden = !active;
+    reviewTab.setAttribute('aria-pressed', String(!active));
+    playTab.setAttribute('aria-pressed', String(active));
+    copyButton.disabled = !game?.fens?.[index];
+    if (active) { depth.value = $('depth').value || '2'; render(); }
+  }
+  reviewTab.addEventListener('click', () => switchMode(false));
+  playTab.addEventListener('click', () => switchMode(true));
+  copyButton.addEventListener('click', () => {
+    if (!game?.fens?.[index]) return;
+    start(game.fens[index], `리뷰의 ${index} 반수 위치`); switchMode(true);
+  });
+  function start(fen, label) {
+    cancelJob(); chess = new Chess();
+    if (!chess.load(fen)) throw Error('연습 시작 위치가 올바르지 않습니다.');
+    baseFen = chess.fen(); origin = label; records = []; inspect = -1; render();
+  }
+  el('new').addEventListener('click', () => start(new Chess().fen(), '표준 시작 위치'));
+  el('reset').addEventListener('click', () => start(baseFen, origin));
+  el('undo').addEventListener('click', () => {
+    cancelJob(); if (records.length) { chess.undo(); records.pop(); } inspect = records.length - 1; render();
+  });
+  function terminalText() {
+    if (chess.in_checkmate()) return `${colorName(chess.turn() === 'w' ? 'b' : 'w')} 체크메이트 승 · 연습 종료`;
+    if (chess.in_draw()) {
+      const reason = chess.in_stalemate() ? '스테일메이트' : chess.in_threefold_repetition() ? '3회 반복' : chess.insufficient_material() ? '기물 부족' : '50수 규칙';
+      return `${reason} · 무승부 · 연습 종료`;
+    }
+    if (records.length >= 160) return '160 반수 한도에 도달했습니다. 새 대국을 시작하거나 한 수를 무르세요.';
+    return null;
+  }
+  function render() {
+    const board = el('board'), frag = document.createDocumentFragment(), last = records.at(-1)?.move;
+    const terminal = terminalText(), locked = busy || Boolean(terminal);
+    for (let row = 0; row < 8; row++) for (let col = 0; col < 8; col++) {
+      const square = 'abcdefgh'[col] + (8 - row), piece = chess.get(square);
+      const cell = document.createElement('button'); cell.type = 'button'; cell.dataset.square = square;
+      cell.className = 'square' + (chess.square_color(square) === 'dark' ? ' dark' : '');
+      cell.setAttribute('aria-label', `${square} ${piece ? colorName(piece.color) + ' ' + names[piece.type] : '빈 칸'}`);
+      cell.setAttribute('aria-pressed', String(selected === square)); cell.disabled = locked;
+      if (last && (last.from === square || last.to === square)) cell.classList.add('last');
+      if (selected === square) cell.classList.add('selected');
+      if (piece?.type === 'k' && piece.color === chess.turn() && chess.in_check()) cell.classList.add('check');
+      if (piece) { const span = document.createElement('span'); span.className = 'piece ' + (piece.color === 'w' ? 'white' : 'black'); span.setAttribute('aria-hidden', 'true'); span.innerHTML = pieceSvg(piece.type, piece.color); cell.append(span); }
+      if (targets.some(m => m.to === square)) { const dot = document.createElement('span'); dot.className = piece ? 'legal-capture' : 'legal-dot'; dot.setAttribute('aria-hidden', 'true'); cell.append(dot); }
+      if (!col) { const label = document.createElement('span'); label.className = 'coord rank'; label.textContent = 8-row; label.setAttribute('aria-hidden','true'); cell.append(label); }
+      if (row === 7) { const label = document.createElement('span'); label.className = 'coord file'; label.textContent = 'abcdefgh'[col]; label.setAttribute('aria-hidden','true'); cell.append(label); }
+      frag.append(cell);
+    }
+    board.replaceChildren(frag);
+    el('origin').textContent = origin;
+    el('turn').textContent = terminal || `${colorName(chess.turn())} 차례${chess.in_check() ? ' · 체크' : ''}`;
+    el('undo').disabled = !records.length; el('count').textContent = `${records.length} / 160 반수`;
+    const status = el('status'); status.replaceChildren();
+    if (busy) { const spinner = document.createElement('span'); spinner.className = 'practice-spinner'; spinner.setAttribute('aria-hidden','true'); status.append(spinner); }
+    status.append(document.createTextNode(busy ? '방금 둔 수를 분석 중입니다. 한 수 무르기, 새 대국 또는 모드 변경으로 취소할 수 있어요.' : terminal || (selected ? `${selected} 선택 · 표시된 합법 도착 칸을 누르세요.` : `${colorName(chess.turn())} 기물을 선택하세요. 두 쪽을 모두 직접 둡니다.`)));
+    const value = records.at(-1)?.after?.value;
+    el('white').style.height = value == null ? '50%' : `${50 + 45 * Math.tanh(value / 500)}%`;
+    el('number').textContent = value == null ? '?' : scoreText(value);
+    el('rail').setAttribute('aria-label', `백 관점 현재 위치 평가 ${value == null ? '미분석' : scoreText(value)}`);
+    renderFeedback(); renderList();
+  }
+  const advice = {best:'이 탐색 깊이에서 최선 평가와 같은 수입니다.',good:'추천 수와 평가 차이가 작습니다. 상대의 다음 위협도 확인해 보세요.',inaccuracy:'조금 더 유리한 길이 있었습니다. 추천 수와 기물의 활동성을 비교해 보세요.',mistake:'의미 있는 점수 손실이 보입니다. 상대의 체크와 잡기를 먼저 확인하세요.',blunder:'큰 점수 손실이 보입니다. 잡히는 기물과 강제 체크의 연속을 확인하세요.'};
+  function renderFeedback() {
+    const r = records[inspect], pre = r?.pre, grade = category(pre);
+    el('title').textContent = r ? `${colorName(r.move.color)}의 ${r.beforeFen.split(' ')[5]}번째 수` : '나의 첫 수';
+    el('move').textContent = r?.move.san || '시작 위치';
+    el('grade').className = 'badge' + (grade ? ' ' + grade : '');
+    el('grade').textContent = grade ? GRADES[grade][0] : r?.state === 'pending' ? '계산 중' : r ? '미분석' : '준비';
+    el('best').textContent = pre?.best?.san || '—';
+    el('advice').textContent = grade ? advice[grade] : r?.state === 'pending' ? '두기 전 위치에서 추천 수와 실제 수를 같은 깊이로 비교하고 있어요.' : r ? (r.error || '분석이 취소되었습니다. 수는 유지되며, 마지막 수는 다시 분석할 수 있어요.') : '한 수를 두면 실제 점수 손실과 추천 수를 계산합니다.';
+    el('detail').textContent = pre ? `손실 ${pre.loss == null ? '—' : Math.round(pre.loss) + 'cp'} · 추천 후 ${scoreText(pre.bestValue)} / 실제 수 후 ${scoreText(pre.actualValue)} (백 관점, 동일 잔여 깊이 ${Math.max(0,pre.depth-1)}) · 완료 깊이 ${pre.depth} / ${r.depth} · ${pre.nodes.toLocaleString()} 노드${pre.limited ? ' · 노드 한도 도달' : ''}${r.after ? ' · 현재 위치 ' + scoreText(r.after.value) : ''}` : '100cp ≈ 폰 1개 · 경량 엔진의 제한된 탐색 결과입니다.';
+    el('retry').hidden = !r || inspect !== records.length - 1 || busy || r.state === 'done';
+  }
+  function renderList() {
+    const list = el('list'); list.replaceChildren();
+    records.forEach((r,i) => {
+      const button = document.createElement('button'); button.type = 'button'; button.className = 'move-button' + (inspect === i ? ' current' : '');
+      button.setAttribute('aria-current', inspect === i ? 'step' : 'false');
+      const grade = category(r.pre), label = grade ? GRADES[grade][0] : r.state === 'pending' ? '계산 중' : '미분석';
+      const text = document.createElement('span'); text.textContent = `${r.beforeFen.split(' ')[5]}${r.move.color === 'w' ? '.' : '…'} ${r.move.san}`;
+      const badge = document.createElement('span'); badge.className = 'small muted'; badge.textContent = label;
+      button.setAttribute('aria-label', `${i+1}번째 반수 ${colorName(r.move.color)} ${r.move.san}, ${label}`);
+      button.append(text,badge); button.addEventListener('click', () => { inspect = i; renderFeedback(); renderList(); }); list.append(button);
+    });
+  }
+  function choose(square) {
+    if (busy || terminalText() || promotion) return;
+    const candidates = targets.filter(m => m.to === square);
+    if (selected && candidates.length) {
+      if (candidates.some(m => m.promotion)) { openPromotion(selected, square); return; }
+      commit({from:selected,to:square}); return;
+    }
+    const piece = chess.get(square);
+    if (piece?.color === chess.turn()) {
+      selected = selected === square ? null : square;
+      targets = selected ? chess.moves({square:selected,verbose:true}) : [];
+      render(); focusSquare(square);
+    } else {
+      el('status').textContent = selected ? '합법 도착 칸을 선택하세요. 선택한 기물은 그대로입니다.' : `${colorName(chess.turn())} 기물만 선택할 수 있어요.`;
+    }
+  }
+  el('board').addEventListener('click', e => { const button = e.target.closest('[data-square]'); if (button) choose(button.dataset.square); });
+  function openPromotion(from,to) {
+    promotion = {from,to}; const choices = dialog.querySelector('.promotion-choices'); choices.replaceChildren();
+    for (const type of ['q','r','b','n']) {
+      const button = document.createElement('button'); button.type = 'button'; button.setAttribute('aria-label', names[type]+(type==='q'?'으로':'로')+' 승격');
+      const picture = document.createElement('span'); picture.setAttribute('aria-hidden','true'); picture.innerHTML = pieceSvg(type,chess.turn());
+      button.append(picture, document.createTextNode(names[type])); button.addEventListener('click', () => { const move = {...promotion,promotion:type}; promotion = null; dialog.close(); commit(move); }); choices.append(button);
+    }
+    dialog.showModal(); choices.firstElementChild.focus();
+  }
+  function commit(move) {
+    if (busy || terminalText()) return;
+    const beforeFen = chess.fen(), actual = chess.move(move); if (!actual) return;
+    selected = null; targets = [];
+    const r = {beforeFen,fen:chess.fen(),move:actual,pre:null,after:null,state:'pending',depth:Number(depth.value)||2};
+    records.push(r); inspect = records.length - 1; analyzeMove(r);
+  }
+  function analyzeMove(r) {
+    cancelJob(); r.pre = null; r.after = null; r.error = null; r.state = 'pending'; busy = true;
+    const token = ++job; render();
+    try {
+      engineUrl = URL.createObjectURL(new Blob([$('chess-library').textContent,'\n',$('local-engine').textContent], {type:'text/javascript'}));
+      engine = new Worker(engineUrl);
+      const error = message => { if (token !== job) return; releaseWorker(); busy = false; r.state = 'error'; r.error = message; render(); };
+      engine.onmessage = e => {
+        if (token !== job || records.at(-1) !== r) return;
+        const data = e.data;
+        if (data.type === 'position') { if (data.index === 0) r.pre = data.result; if (data.index === 1) r.after = data.result; render(); }
+        else if (data.type === 'done') { releaseWorker(); busy = false; r.state = 'done'; render(); if (active && !terminalText()) focusSquare(r.move.to); }
+        else if (data.type === 'error') error('엔진 오류: '+data.message+' 다시 시도하거나 한 수를 무르세요.');
+      };
+      engine.onerror = () => error('로컬 분석을 시작하지 못했습니다. 다시 시도하거나 최신 브라우저에서 열어 보세요.');
+      engine.postMessage({initialFen:r.beforeFen,moves:[{from:r.move.from,to:r.move.to,promotion:r.move.promotion}],depth:r.depth,budget:r.depth === 3 ? 18000 : 8000});
+    } catch (e) { if (token === job) { releaseWorker(); busy = false; r.state = 'error'; r.error = '로컬 분석을 시작하지 못했습니다: '+e.message; render(); } }
+  }
+  el('retry').addEventListener('click', () => { const r = records.at(-1); if (r && !busy) { inspect = records.length - 1; r.depth = Number(depth.value)||2; analyzeMove(r); } });
+  // Capture navigation keys in practice so the original review shortcut never changes index.
+  document.addEventListener('keydown', e => {
+    if (!active || e.ctrlKey || e.metaKey || e.altKey || ['INPUT','TEXTAREA','SELECT'].includes(e.target.tagName)) return;
+    if (!['ArrowLeft','ArrowRight','ArrowUp','ArrowDown','Home','End','Escape'].includes(e.key)) return;
+    e.stopImmediatePropagation();
+    if (dialog.open) return;
+    if (e.key === 'Escape') { selected = null; targets = []; render(); return; }
+    const square = e.target.dataset?.square; if (!square) { e.preventDefault(); return; }
+    e.preventDefault(); let col = square.charCodeAt(0)-97, row = 8-Number(square[1]);
+    if (e.key === 'ArrowLeft') col = Math.max(0,col-1); if (e.key === 'ArrowRight') col = Math.min(7,col+1);
+    if (e.key === 'ArrowUp') row = Math.max(0,row-1); if (e.key === 'ArrowDown') row = Math.min(7,row+1);
+    if (e.key === 'Home') col = 0; if (e.key === 'End') col = 7;
+    focusSquare('abcdefgh'[col]+(8-row));
+  }, true);
+  window.addEventListener('beforeunload', cancelJob);
+  render();
+})();
+
+</script>
+</body></html>
